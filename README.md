@@ -50,7 +50,7 @@ I have trained 3 different CNN model
 
 Run traffic_sign_classifier.py 
 
-*_Format of the uploaded images should be .jpg or .png
+*_Format of the uploaded images should be .jpg or .png_*
 
 It will use weight of 2nd model to classify uploaded the image
 

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+</head>
+<body>
+ <div>
+	<h2>Traffic Sign Recognition</h2>
+  <div style="position: absolute; width:1000px; left:200px; top: 110px">Welcome to Traffic Sign Classifier here you can upload the traffic sign from your device and see what sign it is. So for that click the browse button to select the image from your device.
+  </div>
+<pre>                          </pre>
+
+<form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data" style="position: absolute;width: 400px; left: 36%; top: 38%">
+    <input id="file-picker" type="file" name="file" accept="image/*" multiple>
+    <div id="msg"></div>
+    <input type="submit" value="Upload!" id="upload-button">
+    <img src=" {{url_for('send_image', filename=image_name)}}">
+</form>
+
+   <div style="position: absolute;top: 28%;left:38%">{{ prediction_text }}</div>
+
+ </div>
+
+
+</body>
+<script>
+
+    $("#file-picker").change(function(){
+
+        var input = document.getElementById('file-picker');
+
+        for (var i=0; i<input.files.length; i++)
+        {
+        //koala.jpg, koala.JPG substring(index) lastIndexOf('a') koala.1.jpg
+            var ext= input.files[i].name.substring(input.files[i].name.lastIndexOf('.')+1).toLowerCase()
+
+            if ((ext == 'jpg') || (ext == 'png'))
+            {
+                $("#msg").text("Files is supported")
+            }
+            else
+            {
+                $("#msg").text("Files is NOT supported")
+                document.getElementById("file-picker").value ="";
+            }
+
+        }
+
+
+    } );
+
+</script>
+</html>

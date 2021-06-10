@@ -1,6 +1,6 @@
 # Traffic-sign-classifier
 
-## Project Dependency 
+## Project Dependencies
 
 1. Pandas 
 2. Numpy
